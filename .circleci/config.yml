@@ -15,7 +15,7 @@ jobs:
           name: get foundationdb sources
           command: |
             git clone https://github.com/apple/foundationdb.git
-            git checkout tags/6.1.11
+            git -C foundationdb checkout tags/6.1.11
 
       - run:
           name: configure
