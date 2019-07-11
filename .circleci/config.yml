@@ -1,8 +1,8 @@
 version: 2
 jobs:
-  build:
-    machine:
-      - image: ubuntu-1604:201903-01
+  build_main_deb:
+    docker:
+      - image: foundationdb/foundationdb-build:latest
 
     steps:
       - checkout
@@ -16,5 +16,12 @@ jobs:
             ls -lah
 
       - run:
-          name: Print the Current Time
-          command: date
+          name: test
+          command: |
+            ls -lah
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build_main_deb
