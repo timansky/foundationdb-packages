@@ -1,15 +1,19 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: debian:stretch
+    machine:
+      - image: circleci/ubuntu-1604:201903-01
 
     steps:
       - checkout
 
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: get foundationdb sources
+          command: |
+            git clone git+ssh://github.com:apple/foundationdb.git
+            cd foundationdb
+            git checkout tags/6.1.11
+            ls -lah
 
       - run:
           name: Print the Current Time
