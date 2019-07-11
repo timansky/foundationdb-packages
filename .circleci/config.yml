@@ -5,14 +5,19 @@ jobs:
       - image: ubuntu
 
     steps:
+      - run:
+          name: update git version
+          command: |
+            yum install -y http://opensource.wandisco.com/centos/6/git/x86_64/wandisco-git-release-6-1.noarch.rpm
+            yum install -y git
       - checkout
-#      - run:
-#          name: get foundationdb sources
-#          command: |
-#            git clone https://github.com:apple/foundationdb.git
-#            cd foundationdb
-#            git checkout tags/6.1.11
-#            ls -lah
+      - run:
+          name: get foundationdb sources
+          command: |
+            git clone https://github.com:apple/foundationdb.git
+            cd foundationdb
+            git checkout tags/6.1.11
+            ls -lah
 
       - run:
           name: create work dir
