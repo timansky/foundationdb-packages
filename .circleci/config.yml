@@ -2,7 +2,7 @@ version: 2
 jobs:
   build_main_deb:
     docker:
-      - image: foundationdb/foundationdb-build:latest
+      - image: ubuntu
 
     steps:
       - checkout
