@@ -5,6 +5,8 @@ jobs:
       - image: foundationdb/foundationdb-build:latest
 
     steps:
+      - checkout
+
       - run:
           name: get foundationdb sources
           command: |
