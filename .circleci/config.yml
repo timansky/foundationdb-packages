@@ -15,19 +15,11 @@ jobs:
           name: get foundationdb sources
           command: |
             git clone https://github.com/apple/foundationdb.git
-            cd foundationdb
             git checkout tags/6.1.11
-            ls -lah
-
-      - run:
-          name: create work dir
-          command: |
-            mkdir -p work
-            cd work
 
       - run:
           name: configure
-          command: scl enable devtoolset-8 python27 rh-python36 rh-ruby24 -- bash -c 'cmake -DINSTALL_LAYOUT=DEB ..'
+          command: scl enable devtoolset-8 python27 rh-python36 rh-ruby24 -- bash -c 'cmake -DINSTALL_LAYOUT=DEB foundationdb'
 
       - run:
           name: compile
