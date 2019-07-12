@@ -16,7 +16,7 @@ jobs:
           command: |
             git clone https://github.com/apple/foundationdb.git src/__this_is_some_very_long_name_dir_needed_to_fix_a_bug_with_debug_rpms__/foundationdb
             git -C src/__this_is_some_very_long_name_dir_needed_to_fix_a_bug_with_debug_rpms__/foundationdb checkout tags/6.1.11
-            echo nbproc
+            echo $(nbproc)
 
       - run:
           name: configure
