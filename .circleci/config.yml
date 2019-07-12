@@ -39,7 +39,9 @@ jobs:
           name: make packages
           command: |
             ls -lah
-            docker-compose -f /tmp/workspace/src/build/docker-compose.yaml run prb-packages
+            ls -lah /tmp/workspace/src/
+            cd /tmp/workspace/src/
+            docker-compose -f build/docker-compose.yaml run prb-packages
 
 workflows:
   version: 2
