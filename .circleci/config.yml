@@ -23,11 +23,17 @@ jobs:
 
       - run:
           name: compile
-          command: scl enable devtoolset-8 python27 rh-python36 rh-ruby24 -- bash -c 'make -j 8'
+          command: scl enable devtoolset-8 python27 rh-python36 rh-ruby24 -- bash -c 'make -j 4'
 
       - run:
           name: make packages
           command: scl enable devtoolset-8 python27 rh-python36 rh-ruby24 -- bash -c 'cpack'
+
+      - run:
+          name: make packages
+          command: |
+            ls -lah
+            ls -lah src/__this_is_some_very_long_name_dir_needed_to_fix_a_bug_with_debug_rpms__/foundationdb
 
 workflows:
   version: 2
