@@ -18,18 +18,22 @@ jobs:
             - version
 
   make_packages:
-    machine:
-      image: ubuntu-1604:201903-01
+    # machine:
+      # image: ubuntu-1604:201903-01
+    docker:
+      - image: circleci/buildpack-deps
 
     steps:
+      - setup_remote_docker
+
       - attach_workspace:
-          at: $CIRCLE_WORKING_DIRECTORY
+          at: /tmp/workspace
 
       - run:
           name: make packages
           command: |
             ls -lah
-            docker-compose -f src/build/docker-compose.yaml run prb-packages
+            docker-compose -f /tmp/workspace/src/build/docker-compose.yaml run prb-packages
 
 workflows:
   version: 2
