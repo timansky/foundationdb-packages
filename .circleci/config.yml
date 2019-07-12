@@ -10,18 +10,26 @@ jobs:
           command: |
             curl -SLsf "https://api.github.com/repos/apple/foundationdb/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' > version
             git clone https://github.com/apple/foundationdb.git src
-            git -C src checkout tags/$(cat version)
+            git -C src checkout tags/$(cat workspace/version)
+      - persist_to_workspace:
+          root: $CIRCLE_WORKING_DIRECTORY
+          paths:
+            - src
+            - version
 
   make_packages:
     machine:
       image: ubuntu-1604:201903-01
 
     steps:
+      - attach_workspace:
+          at: $CIRCLE_WORKING_DIRECTORY
+
       - run:
           name: make packages
           command: |
             ls -lah
-            docker-compose -f build/docker-compose.yaml run prb-packages
+            docker-compose -f src/build/docker-compose.yaml run prb-packages
 
 workflows:
   version: 2
