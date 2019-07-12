@@ -23,7 +23,7 @@ jobs:
 
       - run:
           name: compile
-          command: scl enable devtoolset-8 python27 rh-python36 rh-ruby24 -- bash -c 'make -j 4'
+          command: scl enable devtoolset-8 python27 rh-python36 rh-ruby24 -- bash -c 'make -j 2'
 
       - run:
           name: make packages
