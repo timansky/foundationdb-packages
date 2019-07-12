@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   checkout:
     docker:
-      - image: ubuntu:latest
+      - image: circleci/buildpack-deps
     steps:
       - checkout
       - run:
