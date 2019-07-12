@@ -8,7 +8,7 @@ jobs:
       - run:
           name: get sources
           command: |
-            curl -SLsf "https://api.github.com/repos/apple/foundationdb/releases" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' > version
+            curl -SLsf "https://api.github.com/repos/apple/foundationdb/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/' > version
             git clone https://github.com/apple/foundationdb.git src
             git -C src checkout tags/$(cat version)
 
