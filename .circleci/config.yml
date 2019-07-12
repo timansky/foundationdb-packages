@@ -3,7 +3,8 @@ version: 2.1
 executors:
   myexecutor:
     docker:
-      - image: buildpack-deps:bionic
+      # - image: buildpack-deps:bionic
+      - image: circleci/buildpack-deps
     working_directory: /tmp/workspace
 
 jobs:
