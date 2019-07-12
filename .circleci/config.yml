@@ -19,7 +19,9 @@ jobs:
     steps:
       - run:
           name: make packages
-          command: docker-compose -f build/docker-compose.yaml run prb-packages
+          command: |
+            ls -lah
+            docker-compose -f build/docker-compose.yaml run prb-packages
 
 workflows:
   version: 2
