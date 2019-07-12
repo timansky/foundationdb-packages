@@ -41,6 +41,7 @@ jobs:
             ls -lah
             ls -lah /tmp/workspace/src/
             cd /tmp/workspace/src/
+            git status
             docker-compose -f build/docker-compose.yaml run prb-packages
 
 workflows:
