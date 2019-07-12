@@ -1,8 +1,14 @@
 version: 2.1
+
+executors:
+  my-executor:
+    docker:
+      - image: circleci/buildpack-deps:bionic-curl-dind
+    working_directory: /tmp/workspace
+
 jobs:
   checkout:
-    docker:
-      - image: circleci/buildpack-deps
+    executor: my-executor
     steps:
       - checkout
       - run:
