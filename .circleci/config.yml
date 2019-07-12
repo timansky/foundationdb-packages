@@ -12,7 +12,7 @@ jobs:
             git clone https://github.com/apple/foundationdb.git src
             git -C src checkout tags/$(cat version)
       - persist_to_workspace:
-          root: $CIRCLE_WORKING_DIRECTORY
+          root: .
           paths:
             - src
             - version
